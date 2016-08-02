@@ -20,6 +20,7 @@
     "fontasy": "./cli.js"
   },
   "dependencies": {
+    "mkdirp": "^0.5.1",
     "mz": "^2.4.0",
     "stream-to-promise": "^2.2.0",
     "svg2ttf": "^4.0.1",

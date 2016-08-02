@@ -1,11 +1,24 @@
 const fs = require("mz/fs");
 const path = require("path");
 const streamToPromise = require("stream-to-promise");
+const mkdirp = require("mkdirp");
 const svgicons2svgfont = require("svgicons2svgfont");
 const svg2ttf = require("svg2ttf");
 const ttf2eot = require("ttf2eot");
 const ttf2woff = require("ttf2woff");
 const ttf2woff2 = require("ttf2woff2");
+
+function createOutputDir(options) {
+  return new Promise((resolve, reject) => {
+    mkdirp(options.outputDir, err => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve();
+      }
+    });
+  });
+}
 
 function toSvgFont(files, options) {
   const stream = svgicons2svgfont(Object.assign({}, options));
@@ -24,7 +37,7 @@ function toSvgFont(files, options) {
 }
 
 const defaultOptions = {
-  outputDir: ".",
+  outputDir: "./output",
   fontName: "iconfont",
   fontId: undefined,
   fontStyle: '',
@@ -54,12 +67,14 @@ module.exports = function(files, options) {
       return fonts;
     })
     .then(fonts => {
-      return Promise.all([
-        fs.writeFile(baseName + ".svg", fonts.svg),
-        fs.writeFile(baseName + ".ttf", fonts.ttf, "binary"),
-        fs.writeFile(baseName + ".eot", fonts.eot, "binary"),
-        fs.writeFile(baseName + ".woff", fonts.woff, "binary"),
-        fs.writeFile(baseName + ".woff2", fonts.woff2, "binary"),
-      ]);
+      return createOutputDir(options).then(() => {
+        return Promise.all([
+          fs.writeFile(baseName + ".svg", fonts.svg),
+          fs.writeFile(baseName + ".ttf", fonts.ttf, "binary"),
+          fs.writeFile(baseName + ".eot", fonts.eot, "binary"),
+          fs.writeFile(baseName + ".woff", fonts.woff, "binary"),
+          fs.writeFile(baseName + ".woff2", fonts.woff2, "binary"),
+        ]);
+      });
     });
 };
