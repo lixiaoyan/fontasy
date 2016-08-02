@@ -36,6 +36,7 @@ const defaultOptions = {
   descent: undefined,
   ascent: undefined,
   metadata: "Created by Fontasy.",
+  log: () => {},
 };
 
 module.exports = function(files, options) {

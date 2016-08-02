@@ -1,6 +1,24 @@
 {
   "name": "fontasy",
+  "version": "0.0.0",
+  "description": "Yet another icon font generator.",
+  "homepage": "https://github.com/lixiaoyan/fontasy",
+  "repository": {
+    "url": "https://github.com/lixiaoyan/fontasy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lixiaoyan/fontasy/issues"
+  },
   "license": "MIT",
+  "author": {
+    "name": "XiaoYan Li",
+    "email": "lxy.lixiaoyan@gmail.com",
+    "url": "https://github.com/lixiaoyan"
+  },
+  "main": "./index.js",
+  "bin": {
+    "fontasy": "./cli.js"
+  },
   "dependencies": {
     "mz": "^2.4.0",
     "stream-to-promise": "^2.2.0",
