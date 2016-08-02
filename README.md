@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/fontasy.svg)](https://www.npmjs.com/package/fontasy) [![npm license](https://img.shields.io/npm/l/fontasy.svg)](https://www.npmjs.com/package/fontasy)
 
-Yet another icon font generator.
+Yet another icon font generator with ligatures support.
 
 ## Usage
 

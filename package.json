@@ -1,7 +1,7 @@
 {
   "name": "fontasy",
   "version": "0.0.2",
-  "description": "Yet another icon font generator.",
+  "description": "Yet another icon font generator with ligatures support.",
   "homepage": "https://github.com/lixiaoyan/fontasy",
   "repository": {
     "url": "https://github.com/lixiaoyan/fontasy.git"
